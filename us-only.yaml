@@ -1,0 +1,50 @@
+payload:
+  # ==========================================================
+  # 美国 AI
+  # ==========================================================
+  - DOMAIN-SUFFIX,muse.ai
+
+  # ==========================================================
+  # 境外手机卡官网防风控
+  # ==========================================================
+  - DOMAIN-SUFFIX,ultramobile.com
+  - DOMAIN-SUFFIX,upwireless.com
+
+  # ==========================================================
+  # GOOGLE系列
+  # ==========================================================
+  # 5. Google Voice 专属（强制锁死美区原生节点，防封号与降权）
+  # ==========================================================
+  - DOMAIN-SUFFIX,voice.google.com
+  - DOMAIN-SUFFIX,telephony.goog
+  - DOMAIN,voice-pa.clients6.google.com
+  #- DOMAIN-KEYWORD,voice
+
+  # ==========================================================
+  # 微软系列
+  # ==========================================================
+  # Copilot 专属与认证接口（固定美区，避开地区许可证限制）
+  # ==========================================================
+  - DOMAIN-SUFFIX,copilot.microsoft.com
+  - DOMAIN-KEYWORD,copilot
+  - DOMAIN-SUFFIX,copilot.com
+  - DOMAIN-SUFFIX,copilot.cloud.microsoft
+  #- DOMAIN-SUFFIX,cloud.microsoft
+  - DOMAIN-SUFFIX,msauth.net
+  - DOMAIN-SUFFIX,msauthimages.net
+  - DOMAIN-SUFFIX,msftauth.net
+
+  # ==========================================================
+  # 发消息核心 API 与网关（解决一发消息就报地区/许可证限制的关键）
+  # ==========================================================
+  - DOMAIN-SUFFIX,sydney.bing.com
+  - DOMAIN-SUFFIX,syd.bing.com
+  - DOMAIN-SUFFIX,edgeservices.bing.com
+  - DOMAIN-SUFFIX,gateway.bingviz.microsoftapp.net
+
+  # ==========================================================
+  # Bing 与 MSN 支撑体系
+  # ==========================================================
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,api.msn.com
+  - DOMAIN-SUFFIX,msn.com
