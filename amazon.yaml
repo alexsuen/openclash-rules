@@ -1,0 +1,8 @@
+payload:
+  # ==========================================================
+  # 亚马逊 Amazon 卖家中心与后台静态媒体
+  # ==========================================================
+  - DOMAIN-SUFFIX,amazon.com
+  - DOMAIN-SUFFIX,sellercentral.amazon.com
+  - DOMAIN-SUFFIX,media-amazon.com
+  - DOMAIN-SUFFIX,ssl-images-amazon.com
