@@ -1,0 +1,18 @@
+payload:
+  # ==========================================================
+  # PayPal 国际版完整链路（绑定金融策略组）
+  # ==========================================================
+  - DOMAIN-SUFFIX,paypal.com
+  - DOMAIN-SUFFIX,paypalobjects.com
+  - DOMAIN-SUFFIX,paypal-mktg.com
+  - DOMAIN-SUFFIX,paypal-corp.com
+  - DOMAIN-SUFFIX,paypal-communication.com
+  - DOMAIN-KEYWORD,paypal
+
+  # ==========================================================
+  # Wise (TransferWise) 境外汇款完整链路
+  # ==========================================================
+  - DOMAIN-SUFFIX,wise.com
+  - DOMAIN-SUFFIX,transferwise.com
+  - DOMAIN-SUFFIX,wise-assets.com
+  - DOMAIN-SUFFIX,prjts.com
