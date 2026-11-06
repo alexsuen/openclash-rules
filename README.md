@@ -9,14 +9,17 @@
 
 | 文件名 | 规则集名称 | 目标策略组 | 核心包含内容说明 |
 | :--- | :--- | :--- | :--- |
-| **`us-only.yaml`** | 纯美区专属业务 | `🇺🇸 美国节点` | 锁死美区原生住宅/专线节点。包含 Google Voice、海外手机卡官网（Ultra Mobile/Up Wireless）、Copilot 认证与 Bing 网关、美区 AI 媒体等防风控服务。 |
-| **`bank-ph.yaml`** | 菲律宾金融服务 | `🇵🇭 菲律宾节点` | 菲律宾本地金融与电子钱包防风控。包含 GCash 及其底层金融母公司（Mynt）的全套 API 和域名。 |
-| **`games.yaml`** | 游戏平台服务 | `🎮 Steam` | 游戏社区与商店网络加速。包含 Steam 商店、社区、好友聊天及核心静态资源（解决 101/105/118 访问报错）。 |
-| **`my-media.yaml`** | 海外流媒体 | `🇸🇬 新加坡节点` | 海外影音与视频服务。包含爱壹帆 (IYF) 鉴权与流媒体切片 CDN、特定海外多媒体站点（同区绑定防盗链与报错）。 |
-| **`asia.yaml`** | 亚洲区域加速 | `🌏 亚洲地区` | 走低延迟亚洲优选大区。包含 Google APK 下载 CDN (gvt1/1e100 等)、Docker 官方与镜像源、AMD 驱动下载、OneDrive Blob 底层传输。 |
-| **`microsoft.yaml`** | 微软办公与网盘 | `Ⓜ️ 微软服务` | 微软核心办公套件。包含个人版 OneDrive 全家桶（防墙阻断）、Office 365 办公套件、微软统一账号登录与认证服务。 |
-| **`apple.yaml`** | 苹果业务控制 | `🍎 苹果服务` | 苹果基础服务策略控制。包含 iCloud 账号与同步、Apple 官网与账户业务、系统位置服务（便于在面板灵活切换直连或代理）。 |
-| **`direct.yaml`** | 全球直连白名单 | `DIRECT` | 国内高速直连通道。包含苹果推送与商店 CDN、Windows 官方更新、Steam 游戏下载 CDN、TikTok Shop 跨境卖家后台、美国卡 Wi-Fi Calling ePDG 鉴权通道。 |
+| **DIRECT** | `direct.yaml` | 全球直连白名单：系统更新、下载 CDN、Wi-Fi Calling、PayPal中国、TikTok卖家后台 | `🎯 全球直连` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/direct.yaml) |
+| **US-ONLY** | `us-only.yaml` | 纯美区业务：Google Voice、电话卡官网、Copilot 认证、Bing 网关 | `🇺🇸 美国节点` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/us-only.yaml) |
+| **BANK-PH** | `bank-ph.yaml` | 菲律宾金融专线：GCash 电子钱包与 Mynt 官方 API（防异地风控） | `🇵🇭 菲律宾节点` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/bank-ph.yaml) |
+| **FINANCE-GLOBAL** | `finance-global.yaml` | 国际金融与支付：PayPal 国际版全链路、Wise 官方接口与转账网关 | `🏦 金融银行` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/finance-global.yaml) |
+| **SHOPEE** | `shopee.yaml` | 虾皮电商全家桶：Shopee 官方各站点（PH / MY / SG 等）及卖家后台 | `🟠 虾皮电商` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/shopee.yaml) |
+| **AMAZON** | `amazon.yaml` | 亚马逊运营中心：Amazon 商城、Seller Central 卖家中心及后台媒体资源 | `📦 Amazon` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/amazon.yaml) |
+| **GAMES** | `games.yaml` | Steam 游戏平台：商店、社区、好友网络加速（解决 101/105/118 访问异常） | `🎮 Steam` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/games.yaml) |
+| **MY-MEDIA** | `my-media.yaml` | 海外特化影音：爱壹帆 (IYF) 影视鉴权与切片 CDN 调度 | `🇸🇬 新加坡节点` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/my-media.yaml) |
+| **ASIA** | `asia.yaml` | 亚洲区域加速源：Google APK CDN、Docker Hub 镜像、AMD 驱动下载等 | `🌏 亚洲地区` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/asia.yaml) |
+| **MICROSOFT** | `microsoft.yaml` | 微软办公套件：OneDrive 个人版（走代理防阻断）、Office 365 认证与登录 | `Ⓜ️ 微软服务` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/microsoft.yaml) |
+| **APPLE** | `apple.yaml` | 苹果核心业务：iCloud 同步、苹果官方账户服务及基础定位体系 | `🍎 苹果服务` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/apple.yaml) |
 
 ---
 
@@ -24,6 +27,7 @@
 
 1. **规则语法标准**：
    * 所有文件均为纯域名规则集，顶格声明 `payload:`。
+   * 在本地主配置中，将以下 **规则声明** 与 **挂载规则** 放入对应区域即可（必须使用 `behavior: classical`）：
    * 下方规则缩进 2 个空格，严禁携带策略组后缀（如 `,DIRECT` 或 `,🇺🇸 美国节点`）。
 2. **底层协议与端口分离**：
    * 本规则集仅管理域名流量。
