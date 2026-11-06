@@ -1,0 +1,8 @@
+payload:
+  # ==========================================================
+  # 菲律宾 GCash 电子钱包防风控
+  # ==========================================================
+  - DOMAIN-SUFFIX,gcash.com
+  - DOMAIN-SUFFIX,mynt.xyz
+  - DOMAIN-SUFFIX,mynt.com.ph
+  - DOMAIN-KEYWORD,gcash
