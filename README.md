@@ -2,6 +2,7 @@
 # OpenClash 自定义分流规则集 (Rule-Providers)
 
 本项目用于托管个人 OpenClash 模块化分流规则集。通过 GitHub 托管纯域名清单，实现多设备（主路由、便携路由等）规则自动同步，主配置文件无需频繁重启与修改。
+配套使用的是我(https://github.com/alexsuen/openwrt-openclash-hub)  2026最新版yacd去广告版.yaml
 
 ---
 
