@@ -1,0 +1,40 @@
+payload:
+  # ==========================================================
+  # 苹果系统推送、固件更新与商店资源直连
+  # ==========================================================
+  - DOMAIN-SUFFIX,push.apple.com
+  - DOMAIN,time.apple.com
+  - DOMAIN,swcdn.apple.com
+  - DOMAIN,appldnld.apple.com
+  - DOMAIN-SUFFIX,icloud-content.com
+  - DOMAIN-SUFFIX,me.com
+  - DOMAIN-SUFFIX,mzstatic.com
+  - DOMAIN-SUFFIX,aaplimg.com
+  - DOMAIN-SUFFIX,itunes.apple.com
+  - DOMAIN-SUFFIX,apps.apple.com
+
+  # ==========================================================
+  # TikTok Shop 跨境卖家后台（官方国内通道直连秒开）
+  # ==========================================================
+  - DOMAIN-SUFFIX,tiktokshopglobalselling.com
+  - DOMAIN-SUFFIX,tiktokglobalshop.com
+  - DOMAIN-KEYWORD,tiktokshop
+
+  # ==========================================================
+  # 微软商业网盘与 Windows 系统更新（直连国内 CDN 跑满千兆）
+  # ==========================================================
+  - DOMAIN-SUFFIX,sharepoint.com
+  - DOMAIN-SUFFIX,download.windowsupdate.com
+  - DOMAIN-SUFFIX,update.microsoft.com
+  - DOMAIN-SUFFIX,windowsupdate.com
+  - DOMAIN-SUFFIX,tlu.dl.delivery.mp.microsoft.com
+  - DOMAIN-SUFFIX,delivery.mp.microsoft.com
+  - DOMAIN-KEYWORD,xboxlive
+
+  # ==========================================================
+  # Steam 游戏下载 CDN（下载直连跑满千兆）
+  # ==========================================================
+  - DOMAIN-SUFFIX,cm.steampowered.com
+  - DOMAIN-SUFFIX,steamcontent.com
+  - DOMAIN-SUFFIX,steamserver.net
+  - DOMAIN-KEYWORD,steamcontent
