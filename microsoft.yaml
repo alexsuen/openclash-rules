@@ -1,16 +1,17 @@
-# ==========================================================
-# 微软 Bing、Copilot 与系统更新（精细规则置顶，避免大流量误入代理）
-# ==========================================================
-# 1. 个人版 OneDrive 全家桶（国内全被墙，必须全量走代理，严禁直连）
-# 微软登录认证与办公组件（最后匹配兜底代理）
-# ==========================================================
-- DOMAIN-SUFFIX,live.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,login.microsoftonline.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,login.live.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,account.live.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,office.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,office365.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,microsoft.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,onedrive.live.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,onedrive.com,Ⓜ️ 微软服务
-- DOMAIN-SUFFIX,1drv.ms,Ⓜ️ 微软服务
+payload:
+  # ==========================================================
+  # 微软 Bing、Copilot 与系统更新（精细规则置顶，避免大流量误入代理）
+  # ==========================================================
+  # 1. 个人版 OneDrive 全家桶（国内全被墙，必须全量走代理，严禁直连）
+  # 微软登录认证与办公组件（最后匹配兜底代理）
+  # ==========================================================
+  - DOMAIN-SUFFIX,live.com
+  - DOMAIN-SUFFIX,login.microsoftonline.com
+  - DOMAIN-SUFFIX,login.live.com
+  - DOMAIN-SUFFIX,account.live.com
+  - DOMAIN-SUFFIX,office.com
+  - DOMAIN-SUFFIX,office365.com
+  - DOMAIN-SUFFIX,microsoft.com
+  - DOMAIN-SUFFIX,onedrive.live.com
+  - DOMAIN-SUFFIX,onedrive.com
+  - DOMAIN-SUFFIX,1drv.ms
