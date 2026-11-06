@@ -1,0 +1,25 @@
+payload:
+  # --- 1. 独立 AI 工具与媒体生成平台 ---
+  - DOMAIN-SUFFIX,muse.ai
+
+  # --- 2. 微软 Copilot 核心平台与认证接口 ---
+  - DOMAIN-SUFFIX,copilot.microsoft.com
+  - DOMAIN-SUFFIX,copilot.com
+  - DOMAIN-SUFFIX,copilot.cloud.microsoft
+  - DOMAIN-KEYWORD,copilot
+
+  # 登录认证与 Token 校验依赖
+  - DOMAIN-SUFFIX,msauth.net
+  - DOMAIN-SUFFIX,msauthimages.net
+  - DOMAIN-SUFFIX,msftauth.net
+
+  # --- 3. Copilot / Bing 聊天核心网关与底层 API ---
+  - DOMAIN-SUFFIX,sydney.bing.com
+  - DOMAIN-SUFFIX,syd.bing.com
+  - DOMAIN-SUFFIX,edgeservices.bing.com
+  - DOMAIN-SUFFIX,gateway.bingviz.microsoftapp.net
+
+  # Bing 与 MSN 支撑服务
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,api.msn.com
+  - DOMAIN-SUFFIX,msn.com
