@@ -1,16 +1,6 @@
 payload:
   # ==========================================================
-  # 美国手机卡 Wi-Fi Calling ePDG 鉴权通道（直连）
-  # ==========================================================
-  - DOMAIN-SUFFIX,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
-  - DOMAIN-SUFFIX,ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
-  - DOMAIN-SUFFIX,msg.pc.t-mobile.com
-  - DOMAIN-SUFFIX,epdg.epc.mnc410.mcc310.pub.3gppnetwork.org
-  - DOMAIN-SUFFIX,wo.vzwwo.com
-  - DOMAIN-SUFFIX,epdg.epc.mnc480.mcc311.pub.3gppnetwork.org
-  
-  # ==========================================================
-  # 苹果系统推送、固件更新与商店资源直连
+  # 苹果系统推送、固件更新与商店资源（直连秒开）
   # ==========================================================
   - DOMAIN-SUFFIX,push.apple.com
   - DOMAIN,time.apple.com
@@ -24,14 +14,24 @@ payload:
   - DOMAIN-SUFFIX,apps.apple.com
 
   # ==========================================================
-  # TikTok Shop 跨境卖家后台（官方国内通道直连秒开）
+  # 美国手机卡 Wi-Fi Calling ePDG 鉴权通道（直连放行）
+  # ==========================================================
+  - DOMAIN-SUFFIX,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,msg.pc.t-mobile.com
+  - DOMAIN-SUFFIX,epdg.epc.mnc410.mcc310.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,wo.vzwwo.com
+  - DOMAIN-SUFFIX,epdg.epc.mnc480.mcc311.pub.3gppnetwork.org
+
+  # ==========================================================
+  # 🛍️ TikTok Shop 跨境卖家后台（官方国内通道，直连防风控）
   # ==========================================================
   - DOMAIN-SUFFIX,tiktokshopglobalselling.com
   - DOMAIN-SUFFIX,tiktokglobalshop.com
   - DOMAIN-KEYWORD,tiktokshop
 
   # ==========================================================
-  # 微软商业网盘与 Windows 系统更新（直连国内 CDN 跑满千兆）
+  # 微软商业网盘与 Windows 系统更新（国内 CDN 直连跑满千兆）
   # ==========================================================
   - DOMAIN-SUFFIX,sharepoint.com
   - DOMAIN-SUFFIX,download.windowsupdate.com
@@ -42,9 +42,15 @@ payload:
   - DOMAIN-KEYWORD,xboxlive
 
   # ==========================================================
-  # Steam 游戏下载 CDN（下载直连跑满千兆）
+  # Steam 游戏下载 CDN（直连千兆加速）
   # ==========================================================
   - DOMAIN-SUFFIX,cm.steampowered.com
   - DOMAIN-SUFFIX,steamcontent.com
   - DOMAIN-SUFFIX,steamserver.net
   - DOMAIN-KEYWORD,steamcontent
+
+  # ==========================================================
+  # 贝宝中国官网（国内直连通道）
+  # ==========================================================
+  - DOMAIN,www.paypal.cn
+  - DOMAIN-SUFFIX,paypal.cn
