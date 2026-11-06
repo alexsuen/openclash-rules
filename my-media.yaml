@@ -1,0 +1,17 @@
+payload:
+  # ==========================================================
+  # 7. 海外流媒体与特定站点（统一同区节点防盗链报错）
+  # ==========================================================
+  # 爱壹帆 (IYF) 全套流量归拢绑定（网页鉴权与切片同 IP，彻底根治播放错误）
+  - DOMAIN-SUFFIX,iyf.tv
+  - DOMAIN-SUFFIX,kubb.tv
+  - DOMAIN-SUFFIX,anybound.vip
+  - DOMAIN-SUFFIX,pipecdn.vip
+  - DOMAIN-SUFFIX,i1kan.tv
+  - DOMAIN-SUFFIX,dubaoku.tv
+  - DOMAIN-SUFFIX,cdn.iyf.tv
+  - DOMAIN-SUFFIX,v.iyf.tv
+  - DOMAIN-SUFFIX,dataphasora.vip
+
+  # 其它海外视频与AI和多媒体服务
+  - DOMAIN-SUFFIX,cableav.tv
