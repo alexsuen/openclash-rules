@@ -1,6 +1,9 @@
-# Steam 商店、社区与好友网络（走香港节点，解决 101/105/118 报错）
-- DOMAIN-SUFFIX,steampowered.com,🎮 Steam
-- DOMAIN-SUFFIX,steamcommunity.com,🎮 Steam
-- DOMAIN-SUFFIX,steamgames.com,🎮 Steam
-- DOMAIN-SUFFIX,steamstatic.com,🎮 Steam
-- DOMAIN-SUFFIX,steam-chat.com,🎮 Steam
+payload:
+  # ==========================================================
+  # Steam 商店、社区与好友网络（解决 101/105/118 报错）
+  # ==========================================================
+  - DOMAIN-SUFFIX,steampowered.com
+  - DOMAIN-SUFFIX,steamcommunity.com
+  - DOMAIN-SUFFIX,steamgames.com
+  - DOMAIN-SUFFIX,steamstatic.com
+  - DOMAIN-SUFFIX,steam-chat.com
