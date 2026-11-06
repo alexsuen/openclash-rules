@@ -1,0 +1,9 @@
+payload:
+  # ==========================================================
+  # 虾皮 Shopee 跨境电商全家桶（官方与卖家后台）
+  # ==========================================================
+  - DOMAIN-SUFFIX,shopee.com
+  - DOMAIN-SUFFIX,shopee.ph
+  - DOMAIN-SUFFIX,shopee.my
+  - DOMAIN-SUFFIX,shopee.sg
+  - DOMAIN-SUFFIX,shopeesz.com
