@@ -1,0 +1,14 @@
+# ==========================================================
+# 4. 美国手机卡 Wi-Fi Calling 专属（锁死美区原生专属组，严防漂移）
+# ==========================================================
+# 底层 IPsec 握手与数据端口（必须走美区且支持 UDP 的节点）
+- DST-PORT,500,🇺🇸 Wi-Fi Calling
+- DST-PORT,4500,🇺🇸 Wi-Fi Calling
+
+# T-Mobile / Ultra Mobile / Verizon 等运营商 ePDG 鉴权通道
+- DOMAIN-SUFFIX,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org,🇺🇸 Wi-Fi Calling
+- DOMAIN-SUFFIX,ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org,🇺🇸 Wi-Fi Calling
+- DOMAIN-SUFFIX,msg.pc.t-mobile.com,🇺🇸 Wi-Fi Calling
+- DOMAIN-SUFFIX,epdg.epc.mnc410.mcc310.pub.3gppnetwork.org,🇺🇸 Wi-Fi Calling
+- DOMAIN-SUFFIX,wo.vzwwo.com,🇺🇸 Wi-Fi Calling
+- DOMAIN-SUFFIX,epdg.epc.mnc480.mcc311.pub.3gppnetwork.org,🇺🇸 Wi-Fi Calling
