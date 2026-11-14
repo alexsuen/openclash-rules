@@ -27,3 +27,22 @@ payload:
   # 微软个人版 OneDrive 底层文件存储块
   # ==========================================================
   - DOMAIN-SUFFIX,blob.core.windows.net
+
+
+  # ==========================================================
+  # 1.Discord 核心网页与客户端域名
+  # ==========================================================
+  - DOMAIN-SUFFIX,discord.com
+  - DOMAIN-SUFFIX,discordapp.com
+  - DOMAIN-SUFFIX,discord.gg
+  - DOMAIN-SUFFIX,discord.media
+  - DOMAIN-SUFFIX,discordapp.net
+  - DOMAIN-SUFFIX,discordstatus.com
+  
+  # ==========================================================
+  # 2.语音通话与 CDN 媒体资源域名
+  # ==========================================================
+  - DOMAIN-SUFFIX,discord.co
+  - DOMAIN-SUFFIX,discord-activities.com
+  - DOMAIN-SUFFIX,discordsays.com
+  - DOMAIN-KEYWORD,discord
