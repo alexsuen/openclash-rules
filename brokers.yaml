@@ -1,0 +1,138 @@
+payload:
+  # ==========================================
+  # 1. Moomoo & 富途系 (US / SG / HK / AU)
+  # ==========================================
+  - DOMAIN-SUFFIX,moomoo.com
+  - DOMAIN-SUFFIX,moomoobull.com
+  - DOMAIN-SUFFIX,moomooequity.com
+  - DOMAIN-SUFFIX,moomootrustee.com
+  - DOMAIN-SUFFIX,moomoo.ca
+  - DOMAIN-SUFFIX,fututrade.com
+  - DOMAIN-SUFFIX,futunn.com
+  - DOMAIN-SUFFIX,futu.com
+  - DOMAIN-SUFFIX,futu.link
+  - DOMAIN-SUFFIX,futuholdings.com
+  - DOMAIN-SUFFIX,futuhk.com
+  - DOMAIN-SUFFIX,futuhk1.com
+  - DOMAIN-SUFFIX,futuhk2.com
+  - DOMAIN-SUFFIX,futuhkapp.com
+  - DOMAIN-SUFFIX,futusg.com
+  - DOMAIN-SUFFIX,futuau.com
+  - DOMAIN-SUFFIX,futuinc.com
+  - DOMAIN-SUFFIX,futustatic.com
+  - DOMAIN-SUFFIX,ftfast.com
+  - DOMAIN-SUFFIX,futufin.com
+  - DOMAIN,shortconn.im.qcloud.com
+  - DOMAIN,cg.play-analytics.com
+
+  # ==========================================
+  # 2. 长桥证券 Longbridge (HK / SG)
+  # ==========================================
+  - DOMAIN-SUFFIX,longbridge.com
+  - DOMAIN-SUFFIX,longbridge.sg
+  - DOMAIN-SUFFIX,longbridge.hk
+  - DOMAIN-SUFFIX,longbridgeapp.com
+  - DOMAIN-SUFFIX,lbkrs.com
+  - DOMAIN-SUFFIX,mbr-cdn.com
+
+  # ==========================================
+  # 3. 盈透证券 Interactive Brokers (IBKR)
+  # ==========================================
+  - DOMAIN-SUFFIX,interactivebrokers.com
+  - DOMAIN-SUFFIX,interactivebrokers.com.hk
+  - DOMAIN-SUFFIX,interactivebrokers.com.sg
+  - DOMAIN-SUFFIX,ibkr.com
+  - DOMAIN-SUFFIX,ibllc.com
+  - DOMAIN-SUFFIX,ibkrguides.com
+  - DOMAIN-SUFFIX,ibkrcampus.com
+
+  # ==========================================
+  # 4. 嘉信理财 Charles Schwab & TD Ameritrade
+  # ==========================================
+  - DOMAIN-SUFFIX,schwab.com
+  - DOMAIN-SUFFIX,schwabplan.com
+  - DOMAIN-SUFFIX,schwabcdn.com
+  - DOMAIN-SUFFIX,tdameritrade.com
+  - DOMAIN-SUFFIX,thinkorswim.com
+
+  # ==========================================
+  # 5. 富达投资 Fidelity
+  # ==========================================
+  - DOMAIN-SUFFIX,fidelity.com
+  - DOMAIN-SUFFIX,fidelitycharitable.org
+  - DOMAIN-SUFFIX,fidelity-international.com
+
+  # ==========================================
+  # 6. 微牛 Webull & 老虎证券 Tiger Brokers
+  # ==========================================
+  - DOMAIN-SUFFIX,webull.com
+  - DOMAIN-SUFFIX,webullfintech.com
+  - DOMAIN-SUFFIX,webull.hk
+  - DOMAIN-SUFFIX,webull.com.sg
+  - DOMAIN-SUFFIX,tigerbrokers.com
+  - DOMAIN-SUFFIX,tigerbrokers.com.sg
+  - DOMAIN-SUFFIX,itiger.com
+  - DOMAIN-SUFFIX,itigerup.com
+  - DOMAIN-SUFFIX,tigerfintech.com
+
+  # ==========================================
+  # 7. 华盛通 / 盈立 uSMART / 卓锐等港新券商
+  # ==========================================
+  - DOMAIN-SUFFIX,vbkr.com
+  - DOMAIN-SUFFIX,hstong.com
+  - DOMAIN-SUFFIX,usmart.hk
+  - DOMAIN-SUFFIX,usmartsg.com
+  - DOMAIN-SUFFIX,usmartglobal.com
+  - DOMAIN-SUFFIX,zrsec.com
+
+  # ==========================================
+  # 8. 券商行情与交易直连 IP 段（Moomoo / 腾讯海外网关）
+  # ==========================================
+  - IP-CIDR,1.14.242.0/23,no-resolve
+  - IP-CIDR,1.15.158.0/24,no-resolve
+  - IP-CIDR,14.152.91.0/24,no-resolve
+  - IP-CIDR,38.65.217.0/24,no-resolve
+  - IP-CIDR,42.193.128.0/24,no-resolve
+  - IP-CIDR,43.130.30.0/24,no-resolve
+  - IP-CIDR,43.130.170.0/24,no-resolve
+  - IP-CIDR,43.132.106.0/24,no-resolve
+  - IP-CIDR,43.132.107.0/24,no-resolve
+  - IP-CIDR,43.132.138.0/24,no-resolve
+  - IP-CIDR,43.134.158.106/32,no-resolve
+  - IP-CIDR,43.135.64.0/24,no-resolve
+  - IP-CIDR,43.135.82.0/24,no-resolve
+  - IP-CIDR,43.142.232.0/24,no-resolve
+  - IP-CIDR,43.145.30.0/24,no-resolve
+  - IP-CIDR,43.153.191.0/24,no-resolve
+  - IP-CIDR,43.153.233.0/24,no-resolve
+  - IP-CIDR,43.153.234.107/32,no-resolve
+  - IP-CIDR,43.153.249.33/32,no-resolve
+  - IP-CIDR,43.160.156.0/24,no-resolve
+  - IP-CIDR,43.163.17.229/32,no-resolve
+  - IP-CIDR,49.51.77.113/32,no-resolve
+  - IP-CIDR,49.51.78.0/24,no-resolve
+  - IP-CIDR,49.234.241.0/24,no-resolve
+  - IP-CIDR,101.32.198.0/24,no-resolve
+  - IP-CIDR,106.55.66.0/23,no-resolve
+  - IP-CIDR,111.230.119.0/24,no-resolve
+  - IP-CIDR,111.230.214.0/24,no-resolve
+  - IP-CIDR,119.28.37.0/24,no-resolve
+  - IP-CIDR,119.28.141.0/24,no-resolve
+  - IP-CIDR,119.28.183.0/24,no-resolve
+  - IP-CIDR,119.28.201.30/32,no-resolve
+  - IP-CIDR,119.29.48.0/23,no-resolve
+  - IP-CIDR,119.91.245.0/23,no-resolve
+  - IP-CIDR,119.147.110.0/24,no-resolve
+  - IP-CIDR,121.5.97.0/24,no-resolve
+  - IP-CIDR,124.156.124.0/24,no-resolve
+  - IP-CIDR,124.156.233.0/23,no-resolve
+  - IP-CIDR,129.226.79.0/24,no-resolve
+  - IP-CIDR,129.226.111.0/24,no-resolve
+  - IP-CIDR,162.14.10.0/24,no-resolve
+  - IP-CIDR,170.106.48.0/23,no-resolve
+  - IP-CIDR,170.106.62.0/24,no-resolve
+  - IP-CIDR,170.106.201.0/24,no-resolve
+  - IP-CIDR,175.178.207.0/24,no-resolve
+  - IP-CIDR,183.60.225.0/24,no-resolve
+  - IP-CIDR,193.112.84.0/24,no-resolve
+  - IP-CIDR,193.112.234.0/24,no-resolve
