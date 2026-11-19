@@ -10,7 +10,8 @@
 
 | 规则集名称 | 文件名 | 核心包含内容说明 | 目标策略组 | 订阅直链 |
 | :--- | :--- | :--- | :--- | :--- |
-| **DIRECT** | `direct.yaml` | 全球直连白名单：系统更新、下载 CDN、Wi-Fi Calling、PayPal中国、TikTok卖家后台 | `🎯 全球直连` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/direct.yaml) |
+| **CUSTOM-PROXY** | `custom-proxy.yaml` | 自定义强制代理白名单：解决直连抽风、被墙及需指定国家 IP  | `🛡️ 专属代理` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/custom-proxy.yaml) |
+| **DIRECT** | `direct.yaml` | 全球直连白名单：国内通道、微软系统更新、Steam下载CDN、Wi-Fi Calling鉴权及贝宝中国 | `🎯 全球直连` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/direct.yaml) |
 | **US-ONLY** | `us-only.yaml` | 纯美区业务：Google Voice、电话卡官网、Copilot 认证、Bing 网关 | `🇺🇸 美国节点` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/us-only.yaml) |
 | **BANK-PH** | `bank-ph.yaml` | 菲律宾金融专线：GCash 电子钱包与 Mynt 官方 API（防异地风控） | `🇵🇭 菲律宾节点` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/bank-ph.yaml) |
 | **FINANCE-GLOBAL** | `finance-global.yaml` | 国际金融与支付：PayPal 国际版全链路、Wise 官方接口与转账网关 | `🏦 金融银行` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/finance-global.yaml) |
