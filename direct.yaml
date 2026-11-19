@@ -23,12 +23,6 @@ payload:
   - DOMAIN-SUFFIX,wo.vzwwo.com
   - DOMAIN-SUFFIX,epdg.epc.mnc480.mcc311.pub.3gppnetwork.org
 
-  # ==========================================================
-  # 🛍️ TikTok Shop 跨境卖家后台（官方国内通道，直连防风控）
-  # ==========================================================
-  - DOMAIN-SUFFIX,tiktokshopglobalselling.com
-  - DOMAIN-SUFFIX,tiktokglobalshop.com
-  - DOMAIN-KEYWORD,tiktokshop
 
   # ==========================================================
   # 微软商业网盘与 Windows 系统更新（国内 CDN 直连跑满千兆）
