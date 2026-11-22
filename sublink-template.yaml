@@ -1,0 +1,1094 @@
+# ==============================================================================
+# 文件名：sublink-template.yaml
+# 适用场景：内网 Sublink Worker 合并双机场节点专用模板
+# ==============================================================================
+
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090
+secret: ''
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:1053
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver-policy:
+    "geosite:category-ads-all": rcode://refused
+    "aliyun.gtmdns.com": https://cache.server-nameserver.com:30997/dns-query/fixedtoken
+    "fullback-1.timiddns.com": https://cache.server-nameserver.com:30997/dns-query/fixedtoken
+    "*.pqjc.site": 223.5.5.5
+    "geosite:apple": 223.5.5.5
+    "*.apple.com": 223.5.5.5
+    "*.icloud.com": 223.5.5.5
+    "*.itunes.apple.com": 223.5.5.5
+    "*.ls.apple.com": 223.5.5.5
+    "*.push.apple.com": 223.5.5.5
+    "geosite:cn": 223.5.5.5
+  fallback:
+    - 8.8.8.8
+    - 1.1.1.1
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+rule-providers:
+  DIRECT:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/direct.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/direct.yaml"
+    interval: 86400
+  CUSTOM-PROXY:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/custom-proxy.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/custom-proxy.yaml"
+    interval: 86400
+  US-ONLY:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/us-only.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/us-only.yaml"
+    interval: 86400
+  BANK-PH:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/bank-ph.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/bank-ph.yaml"
+    interval: 86400
+  FINANCE-GLOBAL:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/finance-global.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/finance-global.yaml"
+    interval: 86400
+  BROKERS:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/brokers.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/brokers.yaml"
+    interval: 86400
+  SHOPEE:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/shopee.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/shopee.yaml"
+    interval: 86400
+  AMAZON:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/amazon.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/amazon.yaml"
+    interval: 86400
+  GAMES:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/games.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/games.yaml"
+    interval: 86400
+  MY-MEDIA:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/my-media.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/my-media.yaml"
+    interval: 86400
+  ASIA:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/asia.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/asia.yaml"
+    interval: 86400
+  MICROSOFT:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/microsoft.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/microsoft.yaml"
+    interval: 86400
+  APPLE:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule_provider/apple.yaml
+    url: "https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/apple.yaml"
+    interval: 86400
+
+proxy-groups:
+  - name: 🚀 手动选择
+    type: select
+    include-all: true
+    filter: "^(?!.*(公告|官网|提示|到期|剩余|有效|群|通知|流量|重置)).*$"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率|专线"
+    proxies:
+      - ♻️ 自动选择
+      - ⚖️ 负载均衡(散列)
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🌏 亚洲地区
+      - 🇪🇺 欧洲地区
+      - 🌎 美洲地区
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇲🇾 马来西亚节点
+      - 🇹🇭 泰国节点
+      - 🇵🇭 菲律宾节点
+      - 🇮🇩 印尼节点
+      - 🇻🇳 越南节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇩🇪 德国节点
+      - 🇫🇷 法国节点
+      - 🇳🇱 荷兰节点
+      - 🇹🇷 土耳其节点
+      - 🇨🇦 加拿大节点
+      - 🇦🇺 澳大利亚节点
+
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "^(?!.*(公告|官网|提示|到期|剩余|有效|群|通知|流量|重置)).*$"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: ⚖️ 负载均衡(散列)
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://cp.cloudflare.com
+    interval: 300
+    include-all: true
+    filter: "(?i)🇭🇰|港|HK|🇸🇬|新加坡|狮城|SG|🇯🇵|日本|JP|🇹🇼|台湾|TW"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率|公告|官网|提示|到期|剩余|有效|群|通知|流量|重置"
+
+  - name: 🏠 住宅家宽(Home)
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)Home"
+    exclude-filter: "(?i)🇭🇰|港|HK|Hong Kong|\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率|公告|官网|提示|到期|剩余|有效|群|通知"
+
+  - name: 🔥 高倍专线(下载/重度)
+    type: select
+    include-all: true
+    filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)|倍率|专线"
+    exclude-filter: "公告|官网|提示|到期|剩余|有效|群|通知|流量|重置"
+
+  - name: 🌏 南洋节点
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|纽约|亚特兰大|迈阿密|华盛顿|United States|USA|\\bUS\\b|🇸🇬|新加坡|狮城|Singapore|\\bSG\\b|\\bSGP\\b|🇲🇾|马来西亚|大马|吉隆坡|Malaysia|\\bMY\\b|\\bMYS\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 📌 自定义代理
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - ♻️ 自动选择
+      - 🔥 高倍专线(下载/重度)
+      - 🇭🇰 香港节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🤖 ChatGPT
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🌏 南洋节点
+      - 🇺🇸 美国节点
+      - 🇸🇬 新加坡节点
+      - 🇲🇾 马来西亚节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇰🇷 韩国节点
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🧠 Claude
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🇺🇸 美国节点
+      - 🇬🇧 英国节点
+      - 🇸🇬 新加坡节点
+      - 🇯🇵 日本节点
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: ✨ Gemini
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🇺🇸 美国节点
+      - 🇸🇬 新加坡节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🤖 AI服务
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🌏 南洋节点
+      - 🇺🇸 美国节点
+      - 🇸🇬 新加坡节点
+      - 🇲🇾 马来西亚节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇰🇷 韩国节点
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🚀 GitHub
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🐳 Docker镜像
+    type: select
+    proxies:
+      - ⚖️ 负载均衡(散列)
+      - 🔥 高倍专线(下载/重度)
+      - 🏠 住宅家宽(Home)
+      - ♻️ 自动选择
+      - 🇭🇰 香港节点
+      - 🇸🇬 新加坡节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 💬 即时通讯
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇲🇾 马来西亚节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🌐 社交媒体
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇲🇾 马来西亚节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🎶 TikTok
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇰🇷 韩国节点
+      - 🇺🇸 美国节点
+      - 🇲🇾 马来西亚节点
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 📹 YouTube
+    type: select
+    proxies:
+      - ⚖️ 负载均衡(散列)
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🎬 流媒体平台
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🌏 南洋节点
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇲🇾 马来西亚节点
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🎥 AppleTV+
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🇺🇸 美国节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🎻 Spotify
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🎯 全球直连
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🇵🇭 菲律宾节点
+      - 🇲🇾 马来西亚节点
+      - 🚀 手动选择
+
+  - name: 📺 Bahamut
+    type: select
+    proxies:
+      - 🇹🇼 台湾节点
+      - 🇭🇰 香港节点
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🌎 国外媒体
+    type: select
+    proxies:
+      - ⚖️ 负载均衡(散列)
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🟠 虾皮电商
+    type: select
+    include-all: true
+    filter: "(?i)🇵🇭|菲律宾|🇲🇾|马来西亚|🇸🇬|新加坡|🇹🇭|泰国|🇮🇩|印尼|🇻🇳|越南"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 菲律宾自动
+      - ⚡ 马来西亚自动
+      - ⚡ 新加坡自动
+      - ⚡ 泰国自动
+      - ⚡ 印尼自动
+      - ⚡ 越南自动
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🎯 全球直连
+
+  - name: 📦 Amazon
+    type: select
+    include-all: true
+    filter: "(?i)🇺🇸|美国|🇯🇵|日本|🇬🇧|英国|🇩🇪|德国|🇭🇰|香港|\\bHK\\b|Hong Kong"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 香港自动
+      - 🇭🇰 香港节点
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - ⚡ 美国自动
+      - ⚡ 日本自动
+      - ⚡ 英国自动
+      - ⚡ 德国自动
+      - 🎯 全球直连
+
+  - name: 🛒 国外电商
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🎯 全球直连
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+
+  - name: 🏦 金融银行
+    type: select
+    include-all: true
+    filter: "^(?!.*(公告|官网|提示|到期|剩余|有效|群|通知|流量|重置)).*$"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🎯 全球直连
+      - 🔥 高倍专线(下载/重度)
+      - ⚡ 美国自动
+      - ⚡ 香港自动
+      - ⚡ 新加坡自动
+      - ⚡ 菲律宾自动
+      - ⚡ 英国自动
+      - ⚡ 日本自动
+
+  - name: 📈 海外券商
+    type: select
+    proxies:
+      - 🏠 住宅家宽(Home)
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🇭🇰 香港节点
+      - 🔥 高倍专线(下载/重度)
+      - 🎯 全球直连
+
+  - name: 📢 谷歌FCM
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🎯 全球直连
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+
+  - name: 🇬 谷歌服务
+    type: select
+    proxies:
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌏 南洋节点
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇰🇷 韩国节点
+      - 🇲🇾 马来西亚节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+
+  - name: 🎮 游戏平台
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+
+  - name: 🎮 Steam
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+
+  - name: 🚀 测速工具
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🚀 手动选择
+
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🏠 住宅家宽(Home)
+      - 🔥 高倍专线(下载/重度)
+      - 🌏 南洋节点
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇹🇼 台湾节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇲🇾 马来西亚节点
+      - 🚀 手动选择
+      - 🎯 全球直连
+
+  - name: 🔀 非标端口
+    type: select
+    proxies:
+      - 🐟 漏网之鱼
+      - 🎯 全球直连
+
+  - name: 🛑 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 🌏 亚洲地区
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇭🇰|港|HK|Hong Kong|Hongkong|深港|九龙|🇹🇼|🇼🇸|台|TW|Taiwan|新北|彰化|🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|关西|🇰🇷|KR|Korea|首尔|韩|春川|🇸🇬|新加坡|坡|狮城|SG|Singapore|🇲🇾|马来西亚|大马|吉隆坡|MY|Malaysia|🇹🇭|泰国|曼谷|TH|Thailand|🇵🇭|菲律宾|马尼拉|PH|Philippines|🇻🇳|越南|河内|胡志明|VN|Vietnam|🇮🇩|印尼|印度尼西亚|雅加达|ID|Indonesia|🇮🇳|印度|孟买|德里|IN|India"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇪🇺 欧洲地区
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇬🇧|英国|伦敦|United Kingdom|Great Britain|\\bUK\\b|\\bGB\\b|🇩🇪|德国|法兰克福|柏林|Germany|\\bDE\\b|\\bDEU\\b|🇫🇷|法国|巴黎|France|\\bFR\\b|\\bFRA\\b|🇳🇱|荷兰|阿姆斯特丹|Netherlands|\\bNL\\b|\\bNLD\\b|🇹🇷|土耳其|伊斯坦布尔|Turkey|\\bTR\\b|\\bTUR\\b|🇮🇹|意大利|米兰|罗马|Italy|\\bIT\\b|🇪🇸|西班牙|马德里|Spain|\\bES\\b|🇨🇭|瑞士|苏黎世|Switzerland|\\bCH\\b|🇸🇪|瑞典|斯德哥尔摩|Sweden|\\bSE\\b|🇮🇪|爱尔兰|都柏林|Ireland|\\bIE\\b|波兰|华沙|Poland"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🌎 美洲地区
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|纽约|亚特兰大|迈阿密|华盛顿|United States|USA|\\bUS\\b|🇬🇺|关岛|Guam|\\bGU\\b|🇨🇦|加拿大|温哥华|多伦多|蒙特利尔|Canada|\\bCA\\b|\\bCAN\\b|🇲🇽|墨西哥|Mexico|\\bMX\\b|🇧🇷|巴西|圣保罗|Brazil|\\bBR\\b|🇦🇷|阿根廷|布宜诺斯艾利斯|Argentina|\\bAR\\b|智利|Chile"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: ⚡ 香港自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇭🇰|港|\\bHK\\b|Hong Kong|Hongkong|深港|HKG|九龙|新界"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇭🇰 香港节点
+    type: select
+    include-all: true
+    filter: "(?i)🇭🇰|港|\\bHK\\b|Hong Kong|Hongkong|深港|HKG|九龙|新界"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 香港自动
+
+  - name: ⚡ 日本自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|\\bJP\\b|Japan|JPN|NRT|HND|KIX|TYO|OSA|关西"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇯🇵 日本节点
+    type: select
+    include-all: true
+    filter: "(?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|\\bJP\\b|Japan|JPN|NRT|HND|KIX|TYO|OSA|关西"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 日本自动
+
+  - name: ⚡ 台湾自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇹🇼|🇼🇸|台|新北|彰化|\\bTW\\b|Taiwan|TWN|TPE|ROC"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇹🇼 台湾节点
+    type: select
+    include-all: true
+    filter: "(?i)🇹🇼|🇼🇸|台|新北|彰化|\\bTW\\b|Taiwan|TWN|TPE|ROC"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 台湾自动
+
+  - name: ⚡ 新加坡自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇸🇬|新加坡|坡|狮城|\\bSG\\b|Singapore|SIN"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇸🇬 新加坡节点
+    type: select
+    include-all: true
+    filter: "(?i)🇸🇬|新加坡|坡|狮城|\\bSG\\b|Singapore|SIN"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 新加坡自动
+
+  - name: ⚡ 韩国自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇰🇷|\\bKR\\b|Korea|KOR|首尔|韩|韓|春川|ICN"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇰🇷 韩国节点
+    type: select
+    include-all: true
+    filter: "(?i)🇰🇷|\\bKR\\b|Korea|KOR|首尔|韩|韓|春川|ICN"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 韩国自动
+
+  - name: ⚡ 美国自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|纽约|亚特兰大|迈阿密|华盛顿|\\bUS\\b|United States|USA|JFK|EWR|IAD|ATL|ORD|MIA|NYC|LAX|SFO|SEA|DFW|SJC"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇺🇸 美国节点
+    type: select
+    include-all: true
+    filter: "(?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|纽约|亚特兰大|迈阿密|华盛顿|\\bUS\\b|United States|USA|JFK|EWR|IAD|ATL|ORD|MIA|NYC|LAX|SFO|SEA|DFW|SJC"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 美国自动
+
+  - name: ⚡ 加拿大自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇨🇦|加拿大|温哥华|多伦多|蒙特利尔|Canada|\\bCA\\b|\\bCAN\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇨🇦 加拿大节点
+    type: select
+    include-all: true
+    filter: "(?i)🇨🇦|加拿大|温哥华|多伦多|蒙特利尔|Canada|\\bCA\\b|\\bCAN\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 加拿大自动
+
+  - name: ⚡ 英国自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇬🇧|英国|伦敦|United Kingdom|Great Britain|\\bUK\\b|\\bGB\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇬🇧 英国节点
+    type: select
+    include-all: true
+    filter: "(?i)🇬🇧|英国|伦敦|United Kingdom|Great Britain|\\bUK\\b|\\bGB\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 英国自动
+
+  - name: ⚡ 德国自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇩🇪|德国|法兰克福|柏林|Germany|\\bDE\\b|\\bDEU\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇩🇪 德国节点
+    type: select
+    include-all: true
+    filter: "(?i)🇩🇪|德国|法兰克福|柏林|Germany|\\bDE\\b|\\bDEU\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 德国自动
+
+  - name: ⚡ 法国自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇫🇷|法国|巴黎|France|\\bFR\\b|\\bFRA\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇫🇷 法国节点
+    type: select
+    include-all: true
+    filter: "(?i)🇫🇷|法国|巴黎|France|\\bFR\\b|\\bFRA\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 法国自动
+
+  - name: ⚡ 荷兰自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇳🇱|荷兰|阿姆斯特丹|Netherlands|\\bNL\\b|\\bNLD\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇳🇱 荷兰节点
+    type: select
+    include-all: true
+    filter: "(?i)🇳🇱|荷兰|阿姆斯特丹|Netherlands|\\bNL\\b|\\bNLD\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 荷兰自动
+
+  - name: ⚡ 土耳其自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇹🇷|土耳其|伊斯坦布尔|Turkey|\\bTR\\b|\\bTUR\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇹🇷 土耳其节点
+    type: select
+    include-all: true
+    filter: "(?i)🇹🇷|土耳其|伊斯坦布尔|Turkey|\\bTR\\b|\\bTUR\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 土耳其自动
+
+  - name: ⚡ 马来西亚自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇲🇾|马来西亚|大马|吉隆坡|Malaysia|\\bMY\\b|\\bMYS\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇲🇾 马来西亚节点
+    type: select
+    include-all: true
+    filter: "(?i)🇲🇾|马来西亚|大马|吉隆坡|Malaysia|\\bMY\\b|\\bMYS\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 马来西亚自动
+
+  - name: ⚡ 泰国自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇹🇭|泰国|曼谷|Thailand|\\bTH\\b|\\bTHA\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇹🇭 泰国节点
+    type: select
+    include-all: true
+    filter: "(?i)🇹🇭|泰国|曼谷|Thailand|\\bTH\\b|\\bTHA\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 泰国自动
+
+  - name: ⚡ 菲律宾自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇵🇭|菲律宾|马尼拉|Philippines|\\bPH\\b|\\bPHL\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇵🇭 菲律宾节点
+    type: select
+    include-all: true
+    filter: "(?i)🇵🇭|菲律宾|马尼拉|Philippines|\\bPH\\b|\\bPHL\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 菲律宾自动
+
+  - name: ⚡ 印尼自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇮🇩|印尼|印度尼西亚|雅加达|Indonesia|\\bID\\b|\\bIDN\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇮🇩 印尼节点
+    type: select
+    include-all: true
+    filter: "(?i)🇮🇩|印尼|印度尼西亚|雅加达|Indonesia|\\bID\\b|\\bIDN\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 印尼自动
+
+  - name: ⚡ 越南自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇻🇳|越南|河内|胡志明|Vietnam|\\bVN\\b|\\bVNM\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇻🇳 越南节点
+    type: select
+    include-all: true
+    filter: "(?i)🇻🇳|越南|河内|胡志明|Vietnam|\\bVN\\b|\\bVNM\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 越南自动
+
+  - name: ⚡ 澳大利亚自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇦🇺|澳大利亚|悉尼|墨尔本|Australia|\\bAU\\b|\\bAUS\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇦🇺 澳大利亚节点
+    type: select
+    include-all: true
+    filter: "(?i)🇦🇺|澳大利亚|悉尼|墨尔本|Australia|\\bAU\\b|\\bAUS\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 澳大利亚自动
+
+  - name: ⚡ 印度自动
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: "(?i)🇮🇳|印度|孟买|德里|India|\\bIN\\b|\\bIND\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+
+  - name: 🇮🇳 印度节点
+    type: select
+    include-all: true
+    filter: "(?i)🇮🇳|印度|孟买|德里|India|\\bIN\\b|\\bIND\\b"
+    exclude-filter: "(?i)\\d+(\\.\\d+)?\\s*(倍|x)\\b|倍率"
+    proxies:
+      - ⚡ 印度自动
+
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+
+rules:
+  - AND,((DOMAIN-KEYWORD,taobao),(DST-PORT,443),(NETWORK,UDP)),REJECT
+  - AND,((DOMAIN-KEYWORD,alicdn),(DST-PORT,443),(NETWORK,UDP)),REJECT
+  - AND,((DOMAIN-KEYWORD,tmall),(DST-PORT,443),(NETWORK,UDP)),REJECT
+  - DOMAIN-SUFFIX,jddebug.com,REJECT
+  - DOMAIN-SUFFIX,smoot.apple.com,REJECT
+  - DST-PORT,5223,🎯 全球直连
+  - IP-CIDR,17.0.0.0/8,🎯 全球直连,no-resolve
+  - DST-PORT,500,🎯 全球直连
+  - DST-PORT,4500,🎯 全球直连
+  - DOMAIN-SUFFIX,wns.windows.com,⚡ 香港自动
+  - DOMAIN-SUFFIX,ghfast.top,♻️ 自动选择
+  - DOMAIN-SUFFIX,apple-relay.apple.com,🌏 南洋节点
+  - DOMAIN-SUFFIX,apple-relay.cloudflare.com,🌏 南洋节点
+  - DOMAIN-KEYWORD,apple-intelligence,🌏 南洋节点
+  - RULE-SET,DIRECT,🎯 全球直连
+  - RULE-SET,CUSTOM-PROXY,📌 自定义代理
+  - RULE-SET,US-ONLY,🇺🇸 美国节点
+  - RULE-SET,BANK-PH,🇵🇭 菲律宾节点
+  - RULE-SET,FINANCE-GLOBAL,🏦 金融银行
+  - RULE-SET,BROKERS,📈 海外券商
+  - RULE-SET,SHOPEE,🟠 虾皮电商
+  - RULE-SET,AMAZON,📦 Amazon
+  - RULE-SET,GAMES,🎮 Steam
+  - RULE-SET,MY-MEDIA,🇸🇬 新加坡节点
+  - RULE-SET,ASIA,🌏 亚洲地区
+  - RULE-SET,MICROSOFT,Ⓜ️ 微软服务
+  - RULE-SET,APPLE,🍎 苹果服务
+  - GEOSITE,private,🎯 全球直连
+  - GEOIP,private,🎯 全球直连,no-resolve
+  - DOMAIN-SUFFIX,anthropic.com,🧠 Claude
+  - DOMAIN-SUFFIX,claude.ai,🧠 Claude
+  - DOMAIN-SUFFIX,claude.com,🧠 Claude
+  - DOMAIN-SUFFIX,claudeusercontent.com,🧠 Claude
+  - DOMAIN-SUFFIX,gemini.google,✨ Gemini
+  - DOMAIN-SUFFIX,gemini.google.com,✨ Gemini
+  - DOMAIN-SUFFIX,deepmind.com,✨ Gemini
+  - DOMAIN-SUFFIX,deepmind.google,✨ Gemini
+  - DOMAIN-SUFFIX,generativeai.google,✨ Gemini
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,✨ Gemini
+  - DOMAIN-SUFFIX,ai.google.dev,✨ Gemini
+  - DOMAIN-SUFFIX,aistudio.google.com,✨ Gemini
+  - DOMAIN-SUFFIX,notebooklm.google,✨ Gemini
+  - DOMAIN-SUFFIX,notebooklm.google.com,✨ Gemini
+  - GEOSITE,openai,🤖 ChatGPT
+  - GEOSITE,category-ai-!cn,🤖 AI服务
+  - DOMAIN-SUFFIX,docker.io,🐳 Docker镜像
+  - DOMAIN-SUFFIX,docker.com,🐳 Docker镜像
+  - DOMAIN-KEYWORD,dockerhub,🐳 Docker镜像
+  - GEOSITE,category-games@cn,🎯 全球直连
+  - GEOSITE,category-game-platforms-download,🎯 全球直连
+  - GEOSITE,category-public-tracker,🎯 全球直连
+  - GEOSITE,category-communication,💬 即时通讯
+  - GEOSITE,category-social-media-!cn,🌐 社交媒体
+  - GEOSITE,github,🚀 GitHub
+  - GEOSITE,category-speedtest,🚀 测速工具
+  - GEOSITE,steam,🎮 Steam
+  - GEOSITE,youtube,📹 YouTube
+  - GEOSITE,apple-tvplus,🎥 AppleTV+
+  - GEOSITE,apple,🍎 苹果服务
+  - GEOSITE,microsoft,Ⓜ️ 微软服务
+  - GEOSITE,googlefcm,📢 谷歌FCM
+  - GEOSITE,google,🇬 谷歌服务
+  - GEOSITE,tiktok,🎶 TikTok
+  - GEOSITE,netflix,🎬 流媒体平台
+  - GEOSITE,disney,🎬 流媒体平台
+  - GEOSITE,hbo,🎬 流媒体平台
+  - GEOSITE,primevideo,🎬 流媒体平台
+  - GEOSITE,spotify,🎻 Spotify
+  - GEOSITE,bahamut,📺 Bahamut
+  - GEOSITE,category-games,🎮 游戏平台
+  - GEOSITE,category-entertainment,🌎 国外媒体
+  - GEOSITE,category-ecommerce,🛒 国外电商
+  - GEOSITE,gfw,🚀 手动选择
+  - GEOIP,telegram,💬 即时通讯,no-resolve
+  - GEOIP,twitter,🌐 社交媒体,no-resolve
+  - GEOIP,facebook,🌐 社交媒体,no-resolve
+  - GEOIP,google,🇬 谷歌服务,no-resolve
+  - GEOIP,netflix,🎬 流媒体平台,no-resolve
+  - GEOSITE,cn,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连,no-resolve
+  - MATCH,🐟 漏网之鱼
