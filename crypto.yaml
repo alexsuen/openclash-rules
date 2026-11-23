@@ -1,0 +1,71 @@
+payload:
+  # ==============================================================================
+  # 虚拟币主流交易所全量域名规则集 (crypto.yaml)
+  # 路由建议：统一指向【🪙 虚拟币交易所】策略组（推荐锁定台湾 / 日本节点，避开中美新港）
+  # ==============================================================================
+
+  # 1. Bybit（网页 / App / API / 静态资源全覆盖）
+  - DOMAIN-SUFFIX,bybit.com
+  - DOMAIN-SUFFIX,bybit-global.com
+  - DOMAIN-SUFFIX,bytick.com
+  - DOMAIN-SUFFIX,byapis.com
+  - DOMAIN-SUFFIX,bybdc6.com
+  - DOMAIN-SUFFIX,bycsi.com
+  - DOMAIN-SUFFIX,byd3c3.com
+  - DOMAIN-KEYWORD,bybit
+
+  # 2. Binance 币安（主站 / 备用域名 / 静态资源 CDN）
+  - DOMAIN-SUFFIX,binance.com
+  - DOMAIN-SUFFIX,binance.me
+  - DOMAIN-SUFFIX,binance.info
+  - DOMAIN-SUFFIX,binance.cloud
+  - DOMAIN-SUFFIX,bnbstatic.com
+  - DOMAIN-KEYWORD,binance
+
+  # 3. OKX 欧易（主站 / 浏览器 / App 专用防污染域名）
+  - DOMAIN-SUFFIX,okx.com
+  - DOMAIN-SUFFIX,okex.com
+  - DOMAIN-SUFFIX,oklink.com
+  - DOMAIN-SUFFIX,okx-dns.com
+  - DOMAIN-SUFFIX,okx-dns1.com
+  - DOMAIN-SUFFIX,okx-dns2.com
+
+  # 4. Bitget（主站 / App 接口 / 静态资源）
+  - DOMAIN-SUFFIX,bitget.com
+  - DOMAIN-SUFFIX,bitget.site
+  - DOMAIN-SUFFIX,bitgetapps.com
+  - DOMAIN-SUFFIX,bgstatic.com
+  - DOMAIN-KEYWORD,bitget
+
+  # 5. Gate.io 芝麻开门（主站 / 新域名 / API 与资源）
+  - DOMAIN-SUFFIX,gate.io
+  - DOMAIN-SUFFIX,gate.com
+  - DOMAIN-SUFFIX,gateimg.com
+  - DOMAIN-SUFFIX,gatedata.org
+  - DOMAIN-SUFFIX,gateapi.io
+
+  # 6. KuCoin 库币（主站 / 备用站 / 静态资源）
+  - DOMAIN-SUFFIX,kucoin.com
+  - DOMAIN-SUFFIX,kucoin.plus
+  - DOMAIN-SUFFIX,kucoin.cloud
+  - DOMAIN-SUFFIX,kc-static.com
+
+  # 7. MEXC 抹茶（主站 / App 接口资源）
+  - DOMAIN-SUFFIX,mexc.com
+  - DOMAIN-SUFFIX,mexc.io
+  - DOMAIN-SUFFIX,mexcsensors.com
+  - DOMAIN-SUFFIX,mocortech.com
+
+  # 8. HTX 火币（主站 / 历史域名 / 静态资源）
+  - DOMAIN-SUFFIX,htx.com
+  - DOMAIN-SUFFIX,huobi.com
+  - DOMAIN-SUFFIX,hbfile.net
+  - DOMAIN-SUFFIX,huobigroup.com
+
+  # 9. Kraken 海妖（主站 / 接口）
+  #- DOMAIN-SUFFIX,kraken.com
+  # - DOMAIN-SUFFIX,kraken.io
+
+  # 10. Coinbase（主站 / 专业版接口）
+  - DOMAIN-SUFFIX,coinbase.com
+  - DOMAIN-SUFFIX,coinbase.pro
