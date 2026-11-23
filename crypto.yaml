@@ -3,6 +3,7 @@ payload:
   # 虚拟币主流交易所全量域名规则集 (crypto.yaml)
   # 路由建议：统一指向【🪙 虚拟币交易所】策略组（推荐锁定台湾 / 日本节点，避开中美新港）
   # ==============================================================================
+
   # 1. Bybit（网页 / App / API / 静态资源全覆盖）
   - DOMAIN-SUFFIX,bybit.com
   - DOMAIN-SUFFIX,bybit-global.com
@@ -61,10 +62,6 @@ payload:
   - DOMAIN-SUFFIX,hbfile.net
   - DOMAIN-SUFFIX,huobigroup.com
 
-  # 9. Kraken 海妖（主站 / 接口）
-  #- DOMAIN-SUFFIX,kraken.com
-  # - DOMAIN-SUFFIX,kraken.io
-
-  # 10. Coinbase（主站 / 专业版接口）
+  # 9. Coinbase（主站 / 专业版接口）
   - DOMAIN-SUFFIX,coinbase.com
   - DOMAIN-SUFFIX,coinbase.pro
