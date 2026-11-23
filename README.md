@@ -14,6 +14,7 @@
 | **DIRECT** | `direct.yaml` | 全球直连白名单：国内通道、微软系统更新、Steam下载CDN、Wi-Fi Calling鉴权及贝宝中国 | `🎯 全球直连` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/direct.yaml) |
 | **US-ONLY** | `us-only.yaml` | 纯美区业务：Google Voice、电话卡官网、Copilot 认证、Bing 网关 | `🇺🇸 美国节点` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/us-only.yaml) |
 | **BANK-PH** | `bank-ph.yaml` | 菲律宾金融专线：GCash 电子钱包与 Mynt 官方 API（防异地风控） | `🇵🇭 菲律宾节点` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/bank-ph.yaml) |
+| **CRYPTO** | `crypto.yaml` | 主流虚拟币交易所（Bybit、Binance、OKX、Bitget、Gate 等，已剔除英国区 Kraken 单独走英国节点） | `🪙 虚拟币交易所`（锁台湾/日本等合规区，严禁中美新港） | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/crypto.yaml) |
 | **FINANCE-GLOBAL** | `finance-global.yaml` | 国际金融与支付：PayPal 国际版全链路、Wise 官方接口与转账网关 | `🏦 金融银行` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/finance-global.yaml) |
 | **BROKERS** | `brokers.yaml` | 美港新海外券商：Moomoo、长桥、IBKR 盈透、嘉信、富达等行情与交易网关（独立隔离防风控） | `📈 海外券商` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/brokers.yaml) |
 | **SHOPEE** | `shopee.yaml` | 虾皮电商全家桶：Shopee 官方各站点（PH / MY / SG 等）及卖家后台 | `🟠 虾皮电商` | [直链](https://cdn.jsdelivr.net/gh/alexsuen/openclash-rules@main/shopee.yaml) |
@@ -34,3 +35,5 @@
 2. **底层协议与端口分离**：
    * 本规则集仅管理域名流量。
    * 特殊底层逻辑（如 Wi-Fi Calling 的 `UDP 500/4500` 端口、APNs 推送的 `TCP 5223` 端口、淘宝系 `UDP 443` 拦截）直接在本地主 YAML 的 `rules` 顶部生效，不放入本仓库。
+  
+3. * **CRYPTO (`crypto.yaml`)**：覆盖 Bybit、Binance、OKX、Bitget、Gate.io、KuCoin、MEXC、HTX、Coinbase 等主流交易平台的网页与 API 后缀；为防止触发地区合规风控，对应策略组建议锁定台湾或日本节点（英国区注册的 Kraken 已单独在主配置中定向至 `🇬🇧 英国节点`）。
