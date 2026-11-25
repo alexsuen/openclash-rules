@@ -46,7 +46,6 @@ payload:
   # ==========================================================
   # 贝宝中国官网（国内直连通道）
   # ==========================================================
-  - DOMAIN,www.paypal.cn
   - DOMAIN-SUFFIX,paypal.cn
-  - DOMAIN,www.spaceship.com
-  - DOMAIN,imalexsuen.com
+  - DOMAIN-SUFFIX,spaceship.com
+  - DOMAIN-SUFFIX,imalexsuen.com
